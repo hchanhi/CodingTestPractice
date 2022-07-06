@@ -11,8 +11,6 @@ public class bj1076 {
         String c = sc.next();
 
         String[] color = {"black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"};
-//        int [] value = {0,1,2,3,4,5,6,7,8,9};
-//        double [] multiply = {1, 10,
         int value1 = 0;
         int value2 = 0;
         double multiply = 0;
@@ -24,8 +22,8 @@ public class bj1076 {
             } if (c.equals(color[i])) {
                  multiply = Math.pow(10, i);
             }
-        } double ohm = ((value1 + value2) * multiply);
-        System.out.println(Math.round(ohm));
+        }
+        System.out.println(Math.round((value1 + value2) * multiply));
     }
 }
 
