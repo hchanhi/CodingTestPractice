@@ -3,25 +3,39 @@ package RK;
 import java.util.Arrays;
 
 public class RK01 {
+    public static void main(String[] args) {
 
-        public int maximumUnits(int[]boxes, int[] unitPerBox, int truckSize) {
+        int[] boxes = new int[]{1, 1};
+        int[] unitPerBox = new int[]{9, 6};
+        int truckSize = 1;
+        System.out.println(maxUnits(boxes, unitPerBox,truckSize));
+    }
 
-            
-            int MaxUnit = 0;
+        static int maxUnits(int [] boxes, int[] unitPerBox, int truckSize){
 
-            for (int i = 0; i<boxes.length; i++) {
-
-                int count = Math.min(boxes[i], truckSize);
-
-                MaxUnit += count * unitPerBox[i];
-
-                truckSize -= count;
-
-                if (truckSize == 0)
-                    return MaxUnit;
-
+            int maxUnit = 0;
+            int index = 0;
+            int max = 0;
+            for(int i = 0; i<truckSize; i++){
+                for(int j = 0; j<unitPerBox.length; j++){
+                    if(unitPerBox[j]>maxUnit){
+                        maxUnit = unitPerBox[j];
+                        index = j;
+                    }
                 }
-                return MaxUnit;
+                if(truckSize < boxes[index]){
+                    boxes[index] = truckSize;
+                }
+                max = max + maxUnit * boxes[index];
+                truckSize = truckSize - boxes[index];
+                unitPerBox[index] = 0;
+                maxUnit = 0;
             }
-        }
+            return max;
+    }
+}
+
+
+
+
 
